@@ -1,0 +1,23 @@
+<% common        = "--tags ~@manual --format pretty -s" %>
+
+<%android_common = "PLATFORM=android" %>
+<% ios_real_common    = "PLATFORM=iOS-real AUTOMATION_NAME=XCUITEST"%>
+<% test          = "--tags @test" %>
+
+
+API: <%= common %> PLATFORM=api -t @API --tags ~@e2e
+#  API-qa:
+#  API-lenel:
+
+swirl: <%= common %> PLATFORM=desktop BROWSER=chrome -t @swirl
+
+ios: <%= common %> <%= ios_real_common %> APP_PATH=/apps/Building_Access.app -t @iOS_real --tags ~@e2e
+android: <%= common %> <%= android_common %> APP_PATH=/apps/android.apk -t @android
+
+transactions: <%= common %> -t @transactions
+
+hardware:
+wac: <%= common %> PLATFORM=wac -t @wac
+
+end2end: <%= common %> -t @e2e
+

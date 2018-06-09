@@ -1,0 +1,17 @@
+cucumber -p API "baseuri"="lenel" "building"="qa" -t @test
+cucumber -p API "baseuri"="lenel" "building"="matt" -t @test
+
+cucumber -p API "baseuri"="qa" "user"="tenant_admin"
+cucumber -p API "baseuri"="qa" "user"="pma"
+
+ cucumber -p ios_real_mobile -t @test
+
+cucumber -p AdminUI
+
+cucumber -p ios_real_mobile
+
+
+fire up web server on the box `ws -p 8080 -v`
+
+
+cucumber -p end2end  -t @test testrails="true"
